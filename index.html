@@ -3,6 +3,9 @@
 
 <head>
     <title>Deviance Simplified</title>
+
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
     <link rel="stylesheet" href="dist/styles/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -43,12 +46,16 @@
         </div>
     </header>
     <div class="container">
+
         <div id="dig-art" class="category">
             <h1>Digital Art</h1>
             <a id="prev-dig-art" class="prev" href="#"></a>
-            <div class="art-cont">
+            <div class="art-cont slick responsive">
                 <div class="art-ind">
                     <img src="./images/Digital Art/cavern_by_ninjatic-d6cc2td.jpg" alt="Cavern">
+                    <div id="trial">
+                        
+                    </div>
                 </div>
                 <div class="art-ind">
                     <img src="./images/Digital Art/coexistence_by_yuumei-d7mcblu.jpg" alt="Coexistence">
@@ -84,7 +91,7 @@
         <div id="trad-art" class="category">
             <h1>Traditional Art</h1>
             <a id="prev-trad-art" class="prev" href="#"></a>
-            <div class="art-cont">
+            <div class="art-cont slick responsive">
                 <div class="art-ind">
                     <img src="./images/Traditional Art/cold_by_yuumei-d4umi3a.jpg" alt="Cold">
                 </div>
@@ -122,7 +129,7 @@
         <div id="phot" class="category">
             <h1>Photography</h1>
             <a id="prev-phot" class="prev" href="#"></a>
-            <div class="art-cont">
+            <div class="art-cont slick responsive">
                 <div class="art-ind">
                     <img src="./images/Photography/5a09315ee42ac66a4f6e86c69d255544.jpg" alt="Luxury">
                 </div>
@@ -160,7 +167,7 @@
         <div id="tat" class="category">
             <h1>Tattoos</h1>
             <a id="prev-tat" class="prev" href="#"></a>
-            <div class="art-cont">
+            <div class="art-cont slick responsive">
                 <div class="art-ind">
                     <img src="./images/Tattoos/blue_gecko_tattoo_by_2face_tattoo.jpg" alt="Blue Gecko">
                 </div>
@@ -198,37 +205,37 @@
         <div id="drag" class="category">
             <h1>Dragons</h1>
             <a id="prev-drag" class="prev" href="#"></a>
-            <div class="art-cont">
+            <div class="art-cont slick responsive">
                 <div class="art-ind">
                     <img src="./images/Dragons/blue_dragon_by_sandara-d6hvigl.jpg" alt="Blue Dragon">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/dragon_by_draugar.png" alt="Dragon">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/dragon_by_ksar.jpg" alt="Dragon">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/dragon_by_kuroi_kisin-d4xz4wq.jpg" alt="Dragon">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/dragon_woman110419_by_masateru-d3ea7lp.jpg" alt="Dragon Woman">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/40a14aae4c3854d05889d1477db87624-d6hg3ml.jpg" alt="Green Dragon">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/entombed_by_jonasdero-d694g3d.jpg" alt="Entombed">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/sapphire_dragon___reference_by_brassdragon-d1r1ij6.jpg" alt="Sapphire Dragon">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/the_dragon_by_secr3t_x-d4g6a2x.jpg" alt="The Dragon">
-                    </div>
+                </div>
                 <div class="art-ind">
                     <img src="./images/Dragons/the_dragon_master_by_grafik.jpg" alt="The Dragon Master">
-                    </div>
+                </div>
             </div>
             <a id="next-drag" class="prev" href="#"></a>
         </div>
@@ -236,7 +243,7 @@
         <div id="craft" class="category">
             <h1>Crafts</h1>
             <a id="prev-craft" class="prev" href="#"></a>
-            <div class="art-cont">
+            <div class="art-cont slick responsive">
                 <div class="art-ind"><img src="./images/Crafts/dragon_book_by_alectorfencer-d6iydlo.jpg" alt="Dragon Book"></div>
                 <div class="art-ind"><img src="./images/Crafts/egyptian_collar_by_harlequinromantics-d4gsma3.jpg" alt="Egyptian Collar"></div>
                 <div class="art-ind"><img src="./images/Crafts/epic_keys_by_drayok-d3h8i5w.jpg" alt="Epic Keys"></div>
@@ -253,14 +260,41 @@
         <div class="clear"></div>
     </div>
     <script src="https://use.fontawesome.com/0908bc8b51.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="scripts/jquery.rotator.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="slick/slick.js"></script>
+    <script src="scripts/main.js"></script>
+
     <script>
         $(function () {
             $("#heroRotator").Rotator();
         });
     </script>
-
+    <script id="art-dropdown" type="text/x-handlebars-template">
+        <div>
+            {{#each entry}}
+            <div class="container">
+                <article class="row">
+                    <div class="col-sm-6">
+                        <img src="{{art-img}}" alt="{{art-name}}" class="img-thumbnail" />
+                    </div>
+                    <div class="col-sm-6">
+                        <h2><a href="{{name-link}}">{{art-name}}</a></h2>
+                        <h3>by <a href="{{artist-link}}">{{artist-name}}</a></h3>
+                        <h4>{{keywords}}</h4>
+                        <p>
+                            {{description}}
+                        </p>
+                    </div>
+                </article>
+            </div>
+            {{/each}}
+        </div>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 
 </html>

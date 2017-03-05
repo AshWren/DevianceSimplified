@@ -8,24 +8,30 @@ body {
 .top-menu {
   background-color: #b0c0af;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
   .top-menu img {
-    width: 25%; }
-  .top-menu input[type=text] {
-    width: 100px;
-    border: 1px solid #033e04;
-    border-radius: 2px;
-    font-size: 10px;
-    background-color: #d7dfd7;
-    padding: 5px 10px;
-    text-align: right;
-    color: #033e04;
-    margin: 10px 20px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out; }
-  .top-menu input[type=text]:focus {
+    max-width: 25%; }
+  .top-menu .search {
+    width: 50%;
+    position: absolute;
+    right: 25px;
+    /*  input[type=text]:focus {  */
     /* wont work correctly */
-    width: 75%; }
+    /* width: 75%; 
+     } */ }
+    .top-menu .search input[type=text] {
+      width: 100%;
+      border: 1px solid #033e04;
+      border-radius: 2px;
+      font-size: 10px;
+      background-color: #d7dfd7;
+      padding: 5px 10px;
+      text-align: right;
+      color: #033e04;
+      margin: 10px 20px;
+      /*  -webkit-transition: width 0.4s ease-in-out;
+         transition: width 0.4s ease-in-out; */ }
 
 nav {
   background-color: #b0c0af; }
@@ -46,12 +52,15 @@ nav {
   padding: 5px 10px;
   background-size: cover;
   background-position: center center;
-  background-image: url("/images/Background.png");
+  background-image: url("../../images/BackgroundforCategories.png");
   background-repeat: no-repeat;
   width: 25%;
   text-align: center; }
 
-.category .art-cont .art-ind img {
-  width: 25%;
-  margin: 5px;
-  float: left; }
+.category .art-cont .art-ind {
+  margin: 5px; }
+  .category .art-cont .art-ind img {
+    max-height: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    border: 2px solid #033e04; }
