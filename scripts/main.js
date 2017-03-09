@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Slick
-    $('.responsive').slick({
+    $('.slick').slick({
         dots: true,
         infinite: false,
         speed: 300,
@@ -35,9 +35,9 @@ $(document).ready(function () {
 
     // Handlebars
 
-    var url = "../entries.json"  
+    var url = "entries.json"  
 
-    $get(url, function(result){
+    $.get(url, function(result){
         var templateHtml = $('#art-dropdown').html();
         var hbs = Handlebars.compile(templateHtml);
 
@@ -49,4 +49,5 @@ $(document).ready(function () {
 
         $('#trial').append(html);
     });  
+  
 });
