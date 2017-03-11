@@ -1,0 +1,88 @@
+ $fontcolor: #033e04;
+ $theme: #d7dfd7;
+ $themedarker: #b0c0af;
+ * {
+     box-sizing: border-box;
+ }
+ 
+ body {
+     background-color: $theme;
+     color: $fontcolor;
+ }
+ 
+ .top-menu {
+     background-color: $themedarker;
+     display: flex;
+     align-items: center;
+     position: relative;
+     
+     img {
+         max-width: 25%;
+     }
+     .search {
+         width: 50%;
+         position: absolute;
+         right: 25px;
+         input[type=text] {
+             width: 100%;
+             border: 1px solid $fontcolor;
+             border-radius: 2px;
+             font-size: 10px;
+             background-color: $theme;
+             padding: 5px 10px;
+             text-align: right;
+             color: $fontcolor;
+             margin: 10px 20px;
+             /*  -webkit-transition: width 0.4s ease-in-out;
+         transition: width 0.4s ease-in-out; */
+         }
+         /*  input[type=text]:focus {  */
+         /* wont work correctly */
+         /* width: 75%; 
+     } */
+     }
+ }
+ 
+ nav {
+     background-color: $themedarker;
+     ul {
+         padding: 0px;
+         margin: 0px;
+         display: flex;
+         align-items: center;
+         justify-content: space-around;
+     }
+     ul li {
+         list-style-type: none;
+     }
+ }
+ 
+ .clear {
+     clear: both;
+ }
+ 
+ .category {
+     h1 {
+         color: white;
+         padding: 5px 10px;
+         background-size: cover;
+         background-position: center center;
+         background-image: url("../../images/BackgroundforCategories.png");
+         background-repeat: no-repeat;
+         width: 25%;
+         text-align: center;
+     }
+     .art-cont {
+         .art-ind {
+             margin: 5px;
+             
+             img {
+                 max-height: 200px;
+                 max-width: 100%;
+                 margin: 0 auto;
+                 border: 2px solid $fontcolor;
+                 ;
+             }
+         }
+     }
+ }
