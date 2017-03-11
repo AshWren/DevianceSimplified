@@ -6,7 +6,7 @@ $(document).ready(function () {
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 4,
-      
+
         responsive: [{
                 breakpoint: 1024,
                 settings: {
@@ -35,19 +35,47 @@ $(document).ready(function () {
 
     // Handlebars
 
-    var url = "entries.json"  
+    var url = "entries.json"
 
-    $.get(url, function(result){
-        var templateHtml = $('#art-dropdown').html();
-        var hbs = Handlebars.compile(templateHtml);
+    var allEntries = [];
 
-        var obj = {
-            entry: result
+    function loadDiv() {
+
+       
+
+            
+
+            var entryId = $(this).closest('.panel').data('entryid');
+
+            var entry = searchEntries(entryId);
+
+            var fullTemplate = $("#art-dropdown").html();
+            var hbs = Handlebars.compile(fullTemplate);
+
+            var compiledHTML = hbs(entry);
+            
+            var dropDown = $('#trial');
+            dropDown.html(compiledHTML);
+
+        
+
+
+
+
+
+    }
+
+    function searchEntries(id) {
+        for (var i = 0; i < allEntries.length; i++) {
+            if (allEntries[i].id == id) {
+                return allEntries[i];
+            }
         }
+    }
+    console.log(allEntries);
 
-        var html = hbs(obj);
 
-        $('#trial').append(html);
-    });  
-  
+loadDiv();
+
+
 });
