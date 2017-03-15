@@ -52,7 +52,7 @@ $(document).ready(function () {
             var fullTemplate = $("#art-dropdown").html();
             var hbs = Handlebars.compile(fullTemplate);
 
-            var compiledHTML = hbs(entry);
+            var compiledHTML = hbs(allEntries);
 
 
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
 
 
 
-        console.log(compiledHTML);
+        console.log(entryId);
 
 
 
