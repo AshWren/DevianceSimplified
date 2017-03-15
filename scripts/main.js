@@ -35,17 +35,17 @@ $(document).ready(function () {
 
     // Handlebars
 
-    var url = "entries.json"
+    var divLoaded = false;
 
-    var allEntries = [];
+    var url = $.get("entries.json", function(result){
+        allEntries = result;
+    });
+
+    var allEntries = url;
 
     function loadDiv() {
 
-       
-
-            
-
-            var entryId = $(this).closest('.panel').data('entryid');
+            var entryId = $(this).data('entryid');
 
             var entry = searchEntries(entryId);
 
@@ -53,17 +53,22 @@ $(document).ready(function () {
             var hbs = Handlebars.compile(fullTemplate);
 
             var compiledHTML = hbs(entry);
+
+
+
             
-            var dropDown = $('#trial');
+            var dropDown = $('#trial')
             dropDown.html(compiledHTML);
+
+
+
+        console.log(compiledHTML);
+
+
 
         
 
-
-
-
-
-    }
+    };
 
     function searchEntries(id) {
         for (var i = 0; i < allEntries.length; i++) {
@@ -72,10 +77,14 @@ $(document).ready(function () {
             }
         }
     }
-    console.log(allEntries);
+    
+
+$('.art-ind').on('click', function(){
+   loadDiv();
+   
+});
 
 
-loadDiv();
 
 
 });

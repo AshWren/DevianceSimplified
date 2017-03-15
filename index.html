@@ -54,7 +54,7 @@
             <h1>Digital Art</h1>
             <a id="prev-dig-art" class="prev" href="#"></a>
             <div class="art-cont slick responsive">
-                <div class="art-ind">
+                <div id="entry_1" class="art-ind" data-entryid="1">
                     <img src="./images/Digital Art/cavern_by_ninjatic-d6cc2td.jpg" alt="Cavern">
                      <div id="trial">
                         
@@ -267,7 +267,6 @@
    
     <script id="art-dropdown" type="text/x-handlebars-template">
         <div>
-            {{#each entry}}
             <div class="container">
                 <article class="row panel" data-entryid="{{id}}">
                     <div class="col-sm-6">
@@ -283,14 +282,13 @@
                     </div>
                 </article>
             </div>
-            {{/each}}
         </div>
     </script>
     <script src="https://use.fontawesome.com/0908bc8b51.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="slick/slick.js"></script>
+    
     <script src="scripts/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
