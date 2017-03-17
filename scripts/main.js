@@ -33,6 +33,7 @@ $(document).ready(function () {
         ]
     });
 
+
     // Handlebars
 
     $("#trial").hide();
@@ -71,6 +72,160 @@ $(document).ready(function () {
     $('.art-ind').on('click', loadDiv);
 
 
+    // Category Selector
 
+   cleanUp();
+
+    function cleanUp() {
+
+         /*$('#dig-art').removeClass('active');
+         $('#trad-art').removeClass('active');
+         $('#phot').removeClass('active');
+         $('#tat').removeClass('active');
+         $('#drag').removeClass('active');
+         $('#craft').removeClass('active');
+
+         $(".dig-art").html("Digital Art");
+         $(".trad-art").html("Traditional Art");
+         $(".phot").html("Photography");
+         $(".tat").html("Tattoos");
+         $(".drag").html("Dragons");
+         $(".craft").html("Crafts"); */
+
+        $(".dropDown").hide();
+
+     }; 
+
+    function showSection(idClicked) {
+        switch (idClicked) {
+            case "dig-art-cat":
+                $('#dig-art').fadeIn();
+                $('#dig-art-cat').addClass("active");
+                break;
+            case "trad-art-cat":
+                $('#trad-art').fadeIn();
+                $('#trad-art-cat').addClass("active");
+                break;
+            case "phot-cat":
+                $('#phot').fadeIn();
+                $('#phot-cat').addClass("active");
+                break;
+            case "tat-cat":
+                $('#tat').fadeIn();
+                $('#tat-cat').addClass("active");
+                break;
+            case "drag-cat":
+                $('#drag').fadeIn();
+                $('#drag-cat').addClass("active");
+                break;
+            case "craft-cat":
+                $('#craft').fadeIn();
+                $('#craft-cat').addClass("active");
+                break;
+        };
+    };
+
+    function hideSection(idClicked) {
+        switch (idClicked) {
+            case "dig-art-cat":
+                $('#dig-art').fadeOut();
+                $('#dig-art-cat').removeClass("active");
+                break;
+            case "trad-art-cat":
+                $('#trad-art').fadeOut();
+                $('#trad-art-cat').removeClass("active");
+                break;
+            case "phot-cat":
+                $('#phot').fadeOut();
+                $('#phot-cat').removeClass("active");
+                break;
+            case "tat-cat":
+                $('#tat').fadeOut();
+                $('#tat-cat').removeClass("active");
+                break;
+            case "drag-cat":
+                $('#drag').fadeOut();
+                $('#drag-cat').removeClass("active");
+                break;
+            case "craft-cat":
+                $('#craft').fadeOut();
+                $('#craft-cat').removeClass("active");
+                break;
+        };
+    };
+
+    $('#dig-art-cat').on('click', function (e) {
+        e.preventDefault();
+        if ($('#dig-art-cat').hasClass("active")) {
+            $(".dig-art").html("Digital Art");
+            hideSection('dig-art-cat');
+        } else {
+            cleanUp();
+            $(".dig-art").html("[ Digital Art ]");
+            showSection('dig-art-cat');
+        }
+    });
+
+    $('#trad-art-cat').on('click', function (e) {
+        e.preventDefault();
+        if ($('#trad-art-cat').hasClass("active")) {
+            $(".trad-art").html("Traditional Art");
+            hideSection('trad-art-cat');
+        } else {
+            cleanUp();
+            $(".trad-art").html("[ Traditional Art ]");
+            showSection('trad-art-cat');
+        }
+    });
+
+    $('#phot-cat').on('click', function (e) {
+        e.preventDefault();
+        if ($('#phot-cat').hasClass("active")) {
+            $(".phot").html("Photography");
+            hideSection('phot-cat');
+        } else {
+            cleanUp();
+            $(".phot").html("[ Photography ]");
+            showSection('phot-cat');
+        }
+    });
+
+     $('#tat-cat').on('click', function (e) {
+        e.preventDefault();
+        if ($('#tat-cat').hasClass("active")) {
+            $(".tat").html("Tattoos");
+            hideSection('tat-cat');
+        } else {
+            cleanUp();
+            $(".tat").html("[ Tattoos ]");
+            showSection('tat-cat');
+        }
+    });
+
+     $('#drag-cat').on('click', function (e) {
+        e.preventDefault();
+        if ($('#drag-cat').hasClass("active")) {
+            $(".drag").html("Dragons");
+            hideSection('drag-cat');
+        } else {
+            cleanUp();
+            $(".drag").html("[ Dragons ]");
+            showSection('drag-cat');
+        }
+    });
+
+     $('#craft-cat').on('click', function (e) {
+        e.preventDefault();
+        if ($('#craft-cat').hasClass("active")) {
+            $(".craft").html("Crafts");
+            hideSection('craft-cat');
+        } else {
+            cleanUp();
+            $(".craft").html("[ Crafts ]");
+            showSection('craft-cat');
+        }
+    });
+
+    
 
 });
