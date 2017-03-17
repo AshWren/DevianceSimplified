@@ -10,6 +10,49 @@
      color: $fontcolor;
  }
  
+.dropDown {
+    display: none;
+	position: relative;
+	background: $theme;
+	
+    margin-top: 35px;
+    //padding: 10px;
+
+
+}
+
+.dropDown:after, .dropDown:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.dd-wrapper{
+    border: 4px solid $fontcolor;
+}
+
+
+.dropDown:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: $fontcolor;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.dropDown:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: $fontcolor;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
+
+
+
  .top-menu {
      background-color: $themedarker;
      display: flex;
