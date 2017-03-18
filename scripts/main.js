@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     // Handlebars
 
-    $("#trial").hide();
+
 
     var divLoaded = false;
 
@@ -161,7 +161,7 @@ $(document).ready(function () {
             hideSection('dig-art-cat');
         } else {
             cleanUp();
-            $(".dig-art").html("[ Digital Art ]");
+            $(".dig-art").html("<h3>[ Digital Art ]</h3>");
             showSection('dig-art-cat');
         }
     });
@@ -173,7 +173,7 @@ $(document).ready(function () {
             hideSection('trad-art-cat');
         } else {
             cleanUp();
-            $(".trad-art").html("[ Traditional Art ]");
+            $(".trad-art").html("<h3>[ Traditional Art ]</h3>");
             showSection('trad-art-cat');
         }
     });
@@ -185,7 +185,7 @@ $(document).ready(function () {
             hideSection('phot-cat');
         } else {
             cleanUp();
-            $(".phot").html("[ Photography ]");
+            $(".phot").html("<h3>[ Photography ]</h3>");
             showSection('phot-cat');
         }
     });
@@ -197,7 +197,7 @@ $(document).ready(function () {
             hideSection('tat-cat');
         } else {
             cleanUp();
-            $(".tat").html("[ Tattoos ]");
+            $(".tat").html("<h3>[ Tattoos ]</h3>");
             showSection('tat-cat');
         }
     });
@@ -209,7 +209,7 @@ $(document).ready(function () {
             hideSection('drag-cat');
         } else {
             cleanUp();
-            $(".drag").html("[ Dragons ]");
+            $(".drag").html("<h3>[ Dragons ]</h3>");
             showSection('drag-cat');
         }
     });
@@ -221,7 +221,7 @@ $(document).ready(function () {
             hideSection('craft-cat');
         } else {
             cleanUp();
-            $(".craft").html("[ Crafts ]");
+            $(".craft").html("<h3>[ Crafts ]</h3>");
             showSection('craft-cat');
         }
     });
