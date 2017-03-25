@@ -34,67 +34,15 @@ $(document).ready(function () {
     });
 
 
-    // Handlebars
-
-
-
-    var divLoaded = false;
-
-    var url = $.get("entries.json", function (result) {
-        allEntries = result;
-    });
-
-    var allEntries = url;
-
-    function loadDiv() {
-        var isOpen = $(this).find(".dropDown").hasClass("open");
-        $(".open").slideUp().removeClass("open");
-        if (isOpen === false) {
-            var entryId = $(this).data('entryid');
-            var entry = searchEntries(entryId);
-            var fullTemplate = $("#art-dropdown").html();
-            var hbs = Handlebars.compile(fullTemplate);
-            var compiledHTML = hbs(entry);
-            var dropDown = $(this).find(".dropDown").addClass("open");
-            dropDown.html(compiledHTML).slideDown();
-        }
-
-    };
-
-    function searchEntries(id) {
-        for (var i = 0; i < allEntries.length; i++) {
-            if (allEntries[i].id == id) {
-                return allEntries[i];
-            }
-        }
-    }
-
-    $('.art-ind').on('click', loadDiv);
-
-
     // Category Selector
 
-   cleanUp();
+    cleanUp();
 
     function cleanUp() {
 
-         /*$('#dig-art').removeClass('active');
-         $('#trad-art').removeClass('active');
-         $('#phot').removeClass('active');
-         $('#tat').removeClass('active');
-         $('#drag').removeClass('active');
-         $('#craft').removeClass('active');
-
-         $(".dig-art").html("Digital Art");
-         $(".trad-art").html("Traditional Art");
-         $(".phot").html("Photography");
-         $(".tat").html("Tattoos");
-         $(".drag").html("Dragons");
-         $(".craft").html("Crafts"); */
-
         $(".dropDown").hide();
 
-     }; 
+    };
 
     function showSection(idClicked) {
         switch (idClicked) {
@@ -157,11 +105,11 @@ $(document).ready(function () {
     $('#dig-art-cat').on('click', function (e) {
         e.preventDefault();
         if ($('#dig-art-cat').hasClass("active")) {
-            $(".dig-art").html("Digital Art");
+            $(".dig-art").html("<h3 class='select'>Digital Art</h3>");
             hideSection('dig-art-cat');
         } else {
             cleanUp();
-            $(".dig-art").html("<h3>[ Digital Art ]</h3>");
+            $(".dig-art").html("<h3 class='select'>[&nbsp;Digital Art&nbsp;]</h3>");
             showSection('dig-art-cat');
         }
     });
@@ -169,11 +117,11 @@ $(document).ready(function () {
     $('#trad-art-cat').on('click', function (e) {
         e.preventDefault();
         if ($('#trad-art-cat').hasClass("active")) {
-            $(".trad-art").html("Traditional Art");
+            $(".trad-art").html("<h3 class='select'>Traditional Art</h3>");
             hideSection('trad-art-cat');
         } else {
             cleanUp();
-            $(".trad-art").html("<h3>[ Traditional Art ]</h3>");
+            $(".trad-art").html("<h3 class='select'>[&nbsp;Traditional Art&nbsp;]</h3>");
             showSection('trad-art-cat');
         }
     });
@@ -181,51 +129,169 @@ $(document).ready(function () {
     $('#phot-cat').on('click', function (e) {
         e.preventDefault();
         if ($('#phot-cat').hasClass("active")) {
-            $(".phot").html("Photography");
+            $(".phot").html("<h3 class='select'>Photography</h3>");
             hideSection('phot-cat');
         } else {
             cleanUp();
-            $(".phot").html("<h3>[ Photography ]</h3>");
+            $(".phot").html("<h3 class='select'>[&nbsp;Photography&nbsp;]</h3>");
             showSection('phot-cat');
         }
     });
 
-     $('#tat-cat').on('click', function (e) {
+    $('#tat-cat').on('click', function (e) {
         e.preventDefault();
         if ($('#tat-cat').hasClass("active")) {
-            $(".tat").html("Tattoos");
+            $(".tat").html("<h3 class='select'>Tattoos</h3>");
             hideSection('tat-cat');
         } else {
             cleanUp();
-            $(".tat").html("<h3>[ Tattoos ]</h3>");
+            $(".tat").html("<h3 class='select'>[&nbsp;Tattoos&nbsp;]</h3>");
             showSection('tat-cat');
         }
     });
 
-     $('#drag-cat').on('click', function (e) {
+    $('#drag-cat').on('click', function (e) {
         e.preventDefault();
         if ($('#drag-cat').hasClass("active")) {
-            $(".drag").html("Dragons");
+            $(".drag").html("<h3 class='select'>Dragons</h3>");
             hideSection('drag-cat');
         } else {
             cleanUp();
-            $(".drag").html("<h3>[ Dragons ]</h3>");
+            $(".drag").html("<h3 class='select'>[&nbsp;Dragons&nbsp;]</h3>");
             showSection('drag-cat');
         }
     });
 
-     $('#craft-cat').on('click', function (e) {
+    $('#craft-cat').on('click', function (e) {
         e.preventDefault();
         if ($('#craft-cat').hasClass("active")) {
-            $(".craft").html("Crafts");
+            $(".craft").html("<h3 class='select'>Crafts</h3>");
             hideSection('craft-cat');
         } else {
             cleanUp();
-            $(".craft").html("<h3>[ Crafts ]</h3>");
+            $(".craft").html("<h3 class='select'>[&nbsp;Crafts&nbsp;]</h3>");
             showSection('craft-cat');
         }
     });
 
+
+
+
+    // Handlebars
+
+    var url = $.get("entries.json", function (result) {
+        allEntries = result;
+    });
+
+    var allEntries = url;
+
+    var activeId = 0
+
+    function loadDiv() {
+        var dropDown = $(this).closest(".category").find(".dropDown");
+        var div = $(this);
+        var isOpen = dropDown.hasClass("open");
+
+        var entryId = div.data('entryid');
+
+        function buildTemplate() {
+
+            activeId = entryId;
+            var entry = searchEntries(entryId);
+            var fullTemplate = $("#art-dropdown").html();
+            var hbs = Handlebars.compile(fullTemplate);
+            var compiledHTML = hbs(entry);
+            return compiledHTML;
+        };
+
+
+        function showDiv(compiledHTML) {
+            dropDown.addClass("open");
+            dropDown.html(compiledHTML).slideDown();
+        };
+        if (isOpen === true) {
+            $(".open").removeClass("open").slideUp(function () {
+                if (activeId !== entryId) {
+                    showDiv(buildTemplate());
+                } else {
+                    activeId = 0;
+                }
+            });
+        } else {
+            showDiv(buildTemplate());
+        }
+    };
+
+    function searchEntries(id) {
+        for (var i = 0; i < allEntries.length; i++) {
+            if (allEntries[i].id == id) {
+                return allEntries[i];
+            }
+        }
+    }
+
+    $('.art-ind').on('click', loadDiv);
+
+
+    // Search Bar
+
+    function filterEntries() {
     
+        var phrase = $("#searchAll").val();
+
+        if (phrase === '') {
+            return allEntries;
+        }
+
+        var filteredEntries = [];
+
+        for (var i = 0; i < allEntries.length; i++) {
+            var entry = allEntries[i];
+
+            var isMatch = false;
+
+            //search body
+            var search = entry.art - name + ' ' + entry.artist - name + ' ' + entry.description + ' ' + entry.keywords
+
+            if (phrase !== '' && search.indexOf(phrase) > -1) {
+                isMatch = true;
+            }
+
+            if (isMatch === true) {
+                filteredEntries.push(entry);
+            }
+        }
+
+        console.log(filteredEntries);
+
+        return filteredEntries;
+
+    };
+
+
+    // Search Handlebars Divs
+
+    function searchDiv(filteredEntries) {
+        var searchCont = $('.search-container');
+
+        var fullTemplate = $("#art-dropdown").html();
+        var hbs = Handlebars.compile(fullTemplate);
+        
+        var x = "";
+
+        for (var i = 0; i < filteredEntries.length; i++) {
+            x = x + hbs(filteredEntries[i]);
+        }
+        
+        $(".category").hide();
+
+        searchCont.html(x).show();
+
+    }
+
+    $('#btnSearch').on('click', function () {
+        var entries = filterEntries();
+        searchDiv(entries);
+    })
 
 });
