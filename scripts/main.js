@@ -39,9 +39,7 @@ $(document).ready(function () {
     cleanUp();
 
     function cleanUp() {
-
         $(".dropDown").hide();
-
     };
 
     function showSection(idClicked) {
@@ -174,9 +172,6 @@ $(document).ready(function () {
         }
     });
 
-
-
-
     // Handlebars
 
     var url = $.get("entries.json", function (result) {
@@ -188,6 +183,7 @@ $(document).ready(function () {
     var activeId = 0
 
     function loadDiv() {
+
         var dropDown = $(this).closest(".category").find(".dropDown");
         var div = $(this);
         var isOpen = dropDown.hasClass("open");
@@ -209,12 +205,16 @@ $(document).ready(function () {
             dropDown.addClass("open");
             dropDown.html(compiledHTML).slideDown();
         };
+
         if (isOpen === true) {
             $(".open").removeClass("open").slideUp(function () {
                 if (activeId !== entryId) {
+
                     showDiv(buildTemplate());
+                    cleanUp();
                 } else {
                     activeId = 0;
+                    cleanUp();
                 }
             });
         } else {
@@ -232,11 +232,10 @@ $(document).ready(function () {
 
     $('.art-ind').on('click', loadDiv);
 
-
     // Search Bar
 
     function filterEntries() {
-    
+
         var phrase = $("#searchAll").val();
 
         if (phrase === '') {
@@ -261,9 +260,6 @@ $(document).ready(function () {
                 filteredEntries.push(entry);
             }
         }
-
-        console.log(filteredEntries);
-
         return filteredEntries;
 
     };
@@ -276,17 +272,16 @@ $(document).ready(function () {
 
         var fullTemplate = $("#art-dropdown").html();
         var hbs = Handlebars.compile(fullTemplate);
-        
+
         var x = "";
 
         for (var i = 0; i < filteredEntries.length; i++) {
             x = x + hbs(filteredEntries[i]);
         }
-        
+
         $(".category").hide();
 
         searchCont.html(x).show();
-
     }
 
     $('#btnSearch').on('click', function () {
@@ -294,4 +289,26 @@ $(document).ready(function () {
         searchDiv(entries);
     })
 
+    $.each($('.dd-info'), function (e) {
+        var text = $(this).find('p').text();
+        var textShort = text.substr(0, 150) + '...';
+        $(this).data('original', text);
+        $(this).data('short', textShort);
+        $(this).find('p').text($(this).data('short'));
+        $(this).append('<div class="see-more">See More</div>');
+    });
+
+    $('.dd-info .see-more').click(function (e) {
+        var parent = $(this).closest('.dd-info');
+        var myText = parent.find('p');
+        if (!parent.hasClass('more')) {
+            myText.text(parent.data('original'));
+            parent.addClass('more');
+            $(this).text('See Less');
+        } else {
+            myText.text(parent.data('short'));
+            parent.removeClass('more');
+            $(this).text('See More');
+        }
+    });
 });

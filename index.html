@@ -3,14 +3,11 @@
 
 <head>
     <title>Deviance Simplified</title>
-
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Griffy|Londrina+Sketch" rel="stylesheet">
-
-
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
     <link rel="stylesheet" href="dist/styles/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -18,31 +15,33 @@
 <body>
     <header>
         <div class="container">
-            <div class="row">
-                <div class="top-menu">
-                    <div class="logo col-sm-12 col-md-4">
-                        <a href="./index.html"><img src="./images/Deviance Simplified Logo.jpg" alt="Deviance Simplified Logo"></a>
-                    </div>
-                    <div class="search col-sm-12 col-md-8">
-                        
-                            <input class="col-xs-7" type="text" id="searchAll" name="search" placeholder="Search...">
-                            <button class="col-xs-2" id="btnSearch">Search</button>
-                        
-
+            <div class="row top-menu">
+                <div class="logo col-xs-6 col-xs-offset-3 col-sm-6 col-md-4 col-lg-3">
+                    <a href="./index.html"><img src="./images/deviancelogo.png" alt="Deviance Simplified-Logo"></a>
+                    <div class="clear"></div>
+                </div>
+                <div class="search col-sm-12">
+                    <div class="row">
+                        <div class="search-input col-sm-8 col-sm-offset-1 col-lg-9">
+                            <input type="text" id="searchAll" name="search" placeholder="Search...">
+                        </div>
+                        <div class="btnSrc col-sm-2 ">
+                            <button id="btnSearch">Search</button>
+                        </div>
+                        <div class="clear"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
-
             <div class="row">
                 <nav>
                     <ul class="cat">
                         <li id="dig-art-cat" class="dig-art cat-selector active">
-                            <h3 class="select">[&nbsp;Digital Art&nbsp;]</h3>
+                            <h3 class="select">[&nbsp;Digital&nbsp;Art&nbsp;]</h3>
                         </li>
                         <li id="trad-art-cat" class="trad-art cat-selector active">
-                            <h3 class="select">[&nbsp;Traditional Art&nbsp;]</h3>
+                            <h3 class="select">[&nbsp;Traditional&nbsp;Art&nbsp;]</h3>
                         </li>
                         <li id="phot-cat" class="phot cat-selector active">
                             <h3 class="select">[&nbsp;Photography&nbsp;]</h3>
@@ -59,18 +58,14 @@
                     </ul>
                 </nav>
             </div>
-
         </div>
     </header>
-    <div class="search-container">
-
-    </div>
+    <div class="search-container"></div>
     <div class="container">
-
         <div id="dig-art" class="category">
-            <h1>Digital Art</h1>
-            <a id="prev-dig-art" class="prev" href="#"></a>
-
+            <div class="row">
+                <h1 class="col-sm-12 col-md-6 col-lg-4 cat-head-1">Digital Art</h1>
+            </div>
             <div class="art-cont slick responsive slider-nav">
                 <div id="entry_1" class="art-ind" data-entryid="1">
                     <img src="./images/Digital Art/cavern_by_ninjatic-d6cc2td.jpg" alt="Cavern">
@@ -104,16 +99,14 @@
                 </div>
             </div>
             <div class="dig-art-dropDown">
-                <div class="dropDown">
-
-                </div>
+                <div class="dropDown"></div>
             </div>
-            <a id="next-dig-art" class="prev" href="#"></a>
         </div>
         <div class="clear"></div>
         <div id="trad-art" class="category">
-            <h1>Traditional Art</h1>
-            <a id="prev-trad-art" class="prev" href="#"></a>
+            <div class="row">
+                <h1 class="col-sm-12 col-md-6 col-lg-4 cat-head-2">Traditional Art</h1>
+            </div>
             <div class="art-cont slick responsive">
                 <div id="entry_11" class="art-ind" data-entryid="11">
                     <img src="./images/Traditional Art/cold_by_yuumei-d4umi3a.jpg" alt="Cold">
@@ -148,16 +141,14 @@
                 </div>
             </div>
             <div class="trad-art-dropDown">
-                <div class="dropDown">
-
-                </div>
+                <div class="dropDown"></div>
             </div>
-            <a id="next-trad-art" class="prev" href="#"></a>
         </div>
         <div class="clear"></div>
         <div id="phot" class="category">
-            <h1>Photography</h1>
-            <a id="prev-phot" class="prev" href="#"></a>
+            <div class="row">
+                <h1 class="col-sm-12 col-md-6 col-lg-4 cat-head-3">Photography</h1>
+            </div>
             <div class="art-cont slick responsive">
                 <div id="entry_21" class="art-ind" data-entryid="21">
                     <img src="./images/Photography/5a09315ee42ac66a4f6e86c69d255544.jpg" alt="Luxury">
@@ -191,16 +182,14 @@
                 </div>
             </div>
             <div class="phot-dropDown">
-                <div class="dropDown">
-
-                </div>
+                <div class="dropDown"></div>
             </div>
-            <a id="next-phot" class="prev" href="#"></a>
         </div>
         <div class="clear"></div>
         <div id="tat" class="category">
-            <h1>Tattoos</h1>
-            <a id="prev-tat" class="prev" href="#"></a>
+            <div class="row">
+                <h1 class="col-sm-12 col-md-6 col-lg-4 cat-head-4">Tattoos</h1>
+            </div>
             <div class="art-cont slick responsive">
                 <div id="entry_31" class="art-ind" data-entryid="31">
                     <img src="./images/Tattoos/blue_gecko_tattoo_by_2face_tattoo.jpg" alt="Blue Gecko">
@@ -234,16 +223,14 @@
                 </div>
             </div>
             <div class="tat-dropDown">
-                <div class="dropDown">
-
-                </div>
+                <div class="dropDown"></div>
             </div>
-            <a id="next-tat" class="prev" href="#"></a>
         </div>
         <div class="clear"></div>
         <div id="drag" class="category">
-            <h1>Dragons</h1>
-            <a id="prev-drag" class="prev" href="#"></a>
+            <div class="row">
+                <h1 class="col-sm-12 col-md-6 col-lg-4 cat-head-5">Dragons</h1>
+            </div>
             <div class="art-cont slick responsive">
                 <div id="entry_41" class="art-ind" data-entryid="41">
                     <img src="./images/Dragons/blue_dragon_by_sandara-d6hvigl.jpg" alt="Blue Dragon">
@@ -277,16 +264,14 @@
                 </div>
             </div>
             <div class="drag-dropDown">
-                <div class="dropDown">
-
-                </div>
+                <div class="dropDown"></div>
             </div>
-            <a id="next-drag" class="prev" href="#"></a>
         </div>
         <div class="clear"></div>
         <div id="craft" class="category">
-            <h1>Crafts</h1>
-            <a id="prev-craft" class="prev" href="#"></a>
+            <div class="row">
+                <h1 class="col-sm-12 col-md-6 col-lg-4 cat-head-6">Crafts</h1>
+            </div>
             <div class="art-cont slick responsive">
                 <div id="entry_51" class="art-ind" data-entryid="51">
                     <img src="./images/Crafts/dragon_book_by_alectorfencer-d6iydlo.jpg" alt="Dragon Book">
@@ -320,32 +305,35 @@
                 </div>
             </div>
             <div class="craft-dropDown">
-                <div class="dropDown">
-
-                </div>
+                <div class="dropDown"></div>
             </div>
-            <a id="next-craft" class="prev" href="#"></a>
         </div>
         <div class="clear"></div>
     </div>
 
-
-
     <script id="art-dropdown" type="text/x-handlebars-template">
-        <div class="dd-wrapper">
-            <div class="container">
-                <article class="row" data-entryid="{{id}}">
-                    <div class="col-sm-6 img-container">
-                        <img src="{{art-img}}" alt="{{art-name}}" class="img-thumbnail" />
+        <div class="container">
+            <div class="row dd-wrapper">
+                <article class="col-sm-9 col-sm-offset-1" data-entryid="{{id}}">
+                    <div class="row dd-content">
+                        <div class="col-xs-12 col-sm-6 col-md-4 img-container">
+                            <div class="dd-img">
+                                <img src="{{art-img}}" alt="{{art-name}}" class="img-thumbnail" />
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-8">
+                            <div class="dd-info row">
+                                <h2 class="dd-title"><a href="{{name-link}}" target="_blank">{{art-name}}</a></h2>
+                                <h3 class="dd-artist">~ by <a href="{{artist-link}}" target="_blank">{{artist-name}}</a></h3>
+                                <h4 class="key">{{keywords}}</h4>
+                                <p class="dd-desc">
+                                    {{description}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <h2><a href="{{name-link}}" target="_blank">{{art-name}}</a></h2>
-                        <h3>by <a href="{{artist-link}}" target="_blank">{{artist-name}}</a></h3>
-                        <h4>{{keywords}}</h4>
-                        <p>
-                            {{description}}
-                        </p>
-                    </div>
+
                 </article>
             </div>
         </div>
