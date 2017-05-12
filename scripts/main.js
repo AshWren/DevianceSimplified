@@ -183,15 +183,23 @@ $(document).ready(function () {
     var activeId = 0
 
     function loadDiv() {
-
+        cleanUp();
+        $('.dropDown.open').slideUp().removeClass("open");
         var dropDown = $(this).closest(".category").find(".dropDown");
-        var div = $(this);
+        
         var isOpen = dropDown.hasClass("open");
+        
+        var div = $(this);
 
         var entryId = div.data('entryid');
 
-        function buildTemplate() {
+        if (activeId !== entryId) {
+            showDiv(buildTemplate());
+        } else {
+            activeId = 0;
+        }
 
+        function buildTemplate() {
             activeId = entryId;
             var entry = searchEntries(entryId);
             var fullTemplate = $("#art-dropdown").html();
@@ -200,25 +208,37 @@ $(document).ready(function () {
             return compiledHTML;
         };
 
-
         function showDiv(compiledHTML) {
             dropDown.addClass("open");
-            dropDown.html(compiledHTML).slideDown();
+            dropDown.html(compiledHTML);
+            setUpSeeMore(dropDown);
+            dropDown.slideDown();
         };
 
-        if (isOpen === true) {
-            $(".open").removeClass("open").slideUp(function () {
-                if (activeId !== entryId) {
-
-                    showDiv(buildTemplate());
-                    cleanUp();
-                } else {
-                    activeId = 0;
-                    cleanUp();
-                }
-            });
-        } else {
-            showDiv(buildTemplate());
+        function setUpSeeMore(holder) {
+            var cutoff = 200;            
+            var desc = holder.find('.dd-desc');
+            var ddinfo = holder.find('.dd-info');
+            var text = desc.text();
+            if(text.length > cutoff){
+                var textShort = text.substr(0, cutoff) + '...';
+                holder.data('original', text);
+                holder.data('short', textShort);
+                desc.text(holder.data('short'));
+                ddinfo.append('<div class="see-more">See More <i class="fa fa-chevron-down" aria-hidden="true"></i></div>');
+ 
+                holder.find('.see-more').click(function (e) {
+                     if (!ddinfo.hasClass('more')) {
+                        desc.text(holder.data('original'));
+                        ddinfo.addClass('more');
+                        $(this).text('See Less').html('See Less <i class="fa fa-chevron-up" aria-hidden="true"></i>');
+                    } else {
+                        desc.text(holder.data('short'));
+                        ddinfo.removeClass('more');
+                        $(this).text('See More').html('See More <i class="fa fa-chevron-down" aria-hidden="true"></i>');
+                    }
+                });
+           }
         }
     };
 
@@ -288,27 +308,4 @@ $(document).ready(function () {
         var entries = filterEntries();
         searchDiv(entries);
     })
-
-    $.each($('.dd-info'), function (e) {
-        var text = $(this).find('p').text();
-        var textShort = text.substr(0, 150) + '...';
-        $(this).data('original', text);
-        $(this).data('short', textShort);
-        $(this).find('p').text($(this).data('short'));
-        $(this).append('<div class="see-more">See More</div>');
-    });
-
-    $('.dd-info .see-more').click(function (e) {
-        var parent = $(this).closest('.dd-info');
-        var myText = parent.find('p');
-        if (!parent.hasClass('more')) {
-            myText.text(parent.data('original'));
-            parent.addClass('more');
-            $(this).text('See Less');
-        } else {
-            myText.text(parent.data('short'));
-            parent.removeClass('more');
-            $(this).text('See More');
-        }
-    });
 });
